@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌈Lord of Weather</title>
+    <link rel="stylesheet" href="src/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/cb097e56cd.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <div class="block">
+        <div class="block1">
+            <h4 style="--bs-heading-color: rgb(18, 77, 161)">
+
+                🌈Lord of Weather
+            </h4>
+
+            <p class="head" id="headC">Irpin</p>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+
+                            <div class="col-2 col-sm bigdate">
+                                <p id="bdate">May 27</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-auto">
+                                <img class="day" src="images/sun.png" alt="sun">
+                                <span class="daytemp" id="DT">28</span>
+                                <a href="#" class="measure" id="celcius">℃</a> /
+                                <a href="#" class="measure" id="farenheit">℉</a>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-8 col-md-auto">
+                                <img class="night" src="images/moon1.png" alt="moon">
+                                <span class="nighttemp">19℃</span>
+                            </div>
+                            <div class="col-2 col-sm hum">
+                                <br>
+                                <i class="fa-solid fa-droplet bigdrop"></i>
+                                <span humwind> 40 % </span>
+                                <br>
+                                <i class="fa-solid fa-wind bigwind"></i>
+                                <span humwind> 4 km/h </span>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col smalfore">
+                        <div class="row row-cols-2">
+                            <div class="col border border-primary border-opacity-75">
+                                <div class="row-3 forecast">
+                                    <div class="col fore-date">28.05</div>
+                                    <div class="col fore-temp">
+                                        <span class="smdaytemp">23℃</span> / <span class="smnighttemp">16℃</span>
+                                    </div>
+                                    <div class="col fore-status">
+                                        <i class="fa-solid fa-cloud-rain"></i>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col border border-primary border-opacity-75">
+                                <div class="row-3 forecast">
+                                    <div class="col fore-date">29.05</div>
+                                    <div class="col fore-temp">
+                                        <span class="smdaytemp">22℃</span> / <span class="smnighttemp">15℃</span>
+                                    </div>
+                                    <div class="col fore-status">
+                                        <i class="fa-solid fa-sun"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col border border-primary border-opacity-75">
+                                <div class="row-3 forecast">
+                                    <div class="col fore-date">31.05</div>
+                                    <div class="col fore-temp">
+                                        <span class="smdaytemp">20℃</span> / <span class="smnighttemp">16℃</span>
+                                    </div>
+                                    <div class="col fore-status">
+                                        <i class="fa-solid fa-cloud-sun"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col border border-primary border-opacity-75">
+                                <div class="row-3 forecast">
+                                    <div class="col fore-date">01.06</div>
+                                    <div class="col fore-temp">
+                                        <span class="smdaytemp">25℃</span> / <span class="smnighttemp">17℃</span>
+                                    </div>
+                                    <div class="col fore-status">
+                                        <i class="fa-solid fa-sun"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <form id="search">
+                <input class="city-search" type="search" placeholder="Search for a city" id="CS">
+                <input class="btn-search" type="submit" value="GO 🔎" id="BS">
+                <button class="showCurrent" id="currentCityTemp">Current</button>
+            </form>
+
+
+        </div>
+    </div>
+    <script src="src/index.js"></script>
+</body>
+
+</html>

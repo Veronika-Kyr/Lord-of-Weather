@@ -1,0 +1,141 @@
+.block {
+    height: 600px;
+    max-width: 1000px;
+    border: 4px solid rgb(15, 59, 120);
+    border-radius: 20px;
+    background: url('../images/hoverla.jpg') no-repeat center/100%;
+
+    margin: 50px auto;
+}
+
+.block1 {
+    background: rgba(255, 255, 255, 0.7);
+    height: 592px;
+    max-width: 990px;
+    border: none;
+    border-radius: 20px;
+    margin: 0 auto;
+    position: absolute;
+    top: 54px;
+}
+
+h4 {
+    font-family: 'Fredoka One', cursive;
+    margin: 12px 0 0 10px;
+}
+
+.head {
+    font-size: 80px;
+    color: red;
+    font-weight: 600;
+    text-align: left;
+    text-indent: 620px;
+    margin: 0 0 20px 0;
+    line-height: 1.2;
+}
+
+.daytemp {
+    font-size: 85px;
+    font-weight: 600;
+    color: rgb(249, 100, 7);
+    text-align: center;
+}
+
+.day {
+    width: 95px;
+    margin: 0 20px 0 15px;
+    vertical-align: top;
+    padding-top: 20px;
+}
+
+.nighttemp {
+    font-size: 85px;
+    font-weight: 600;
+    color: rgb(15, 59, 120);
+    text-align: center;
+}
+
+.night {
+    width: 80px;
+    margin: 0 20px 0 15px;
+    vertical-align: top;
+    padding-top: 20px;
+}
+
+.bigdate {
+    text-align: right;
+    font-size: 25px;
+    color: rgb(15, 59, 120);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.bigwind,
+.bigdrop {
+    font-size: 35px;
+    color: rgb(15, 59, 120);
+}
+
+.hum {
+    text-align: right;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.forecast {
+    text-align: center;
+}
+
+.fore-date {
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.smdaytemp {
+    color: rgb(249, 100, 7);
+}
+
+.smnighttemp {
+    color: rgb(15, 59, 120);
+}
+
+.fore-temp {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.fore-status {
+    font-size: 40px;
+    font-weight: 600;
+    color: rgb(15, 59, 120);
+}
+
+.city-search {
+    border: 2px solid rgb(15, 59, 120);
+    border-radius: 20px;
+    padding: 20px 25px;
+    width: 500px;
+    margin: 40px 20px 0 20px;
+}
+
+.btn-search {
+    border: 2px solid rgb(15, 59, 120);
+    border-radius: 20px;
+    padding: 13px 10px;
+    width: 100px;
+    color: white;
+    background: rgb(15, 59, 120);
+    margin-top: 40px;
+}
+
+.showCurrent {
+    border: 2px solid rgb(249, 100, 7);
+    border-radius: 20px;
+    padding: 13px 10px;
+    width: 100px;
+    color: white;
+    background: rgb(249, 100, 7);
+    margin-top: 40px;
+    margin-left: 25px;
+}
