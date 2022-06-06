@@ -5,7 +5,7 @@
     border-radius: 20px;
     background: url('../images/hoverla.jpg') no-repeat center/100%;
 
-    margin: 50px auto;
+    margin: 50px auto 8px auto;
 }
 
 .block1 {
@@ -138,4 +138,14 @@ h4 {
     background: rgb(249, 100, 7);
     margin-top: 40px;
     margin-left: 25px;
+}
+
+.gitRef {
+    margin: 0 auto;
+    width: 950px;
+}
+
+.codeRef {
+    font-size: 12px;
+    text-align: left;
 }
