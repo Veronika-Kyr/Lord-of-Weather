@@ -21,7 +21,7 @@
 
 h4 {
     font-family: 'Fredoka One', cursive;
-    margin: 12px 0 0 10px;
+    margin: 9px 0 0 10px;
 }
 
 .head {
@@ -35,39 +35,46 @@ h4 {
 }
 
 .daytemp {
-    font-size: 85px;
+    font-size: 110px;
+    line-height: 0.9;
     font-weight: 600;
     color: rgb(249, 100, 7);
     text-align: center;
+
 }
 
 .measureC {
     text-decoration: none;
-    font-size: 38px;
+    font-size: 70px;
     font-weight: 600;
     color: rgb(15, 59, 120);
+
 }
+
+#celciusmin {
+    font-size: 40px;
+}
+
+.measure {}
 
 .day {
     width: 95px;
-    margin: 0 20px 0 15px;
-    /* vertical-align: top; */
+    margin: 0 30px 0 20px;
+    vertical-align: top;
     /* padding-top: 20px; */
 }
 
 .nighttemp {
-    font-size: 65px;
+    font-size: 50px;
     font-weight: 600;
     color: rgb(15, 59, 120);
     text-align: right;
-    text-indent: 80px;
 }
 
-.night {
-    width: 80px;
-    margin: 0 20px 0 15px;
-    vertical-align: top;
+#maxTemp {
+    padding-left: 110px;
     padding-top: 20px;
+    color: rgb(249, 100, 7);
 }
 
 .bigdate {
