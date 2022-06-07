@@ -26,7 +26,7 @@ h4 {
 
 .head {
     font-size: 80px;
-    color: red;
+    color: rgb(249, 100, 7);
     font-weight: 600;
     text-align: center;
     text-indent: 400px;
@@ -41,18 +41,26 @@ h4 {
     text-align: center;
 }
 
+.measureC {
+    text-decoration: none;
+    font-size: 38px;
+    font-weight: 600;
+    color: rgb(15, 59, 120);
+}
+
 .day {
     width: 95px;
     margin: 0 20px 0 15px;
-    vertical-align: top;
-    padding-top: 20px;
+    /* vertical-align: top; */
+    /* padding-top: 20px; */
 }
 
 .nighttemp {
-    font-size: 85px;
+    font-size: 65px;
     font-weight: 600;
     color: rgb(15, 59, 120);
-    text-align: center;
+    text-align: right;
+    text-indent: 80px;
 }
 
 .night {
@@ -72,14 +80,14 @@ h4 {
 
 .bigwind,
 .bigdrop {
-    font-size: 35px;
+    font-size: 25px;
     color: rgb(15, 59, 120);
 }
 
 .hum {
     text-align: right;
     font-weight: 600;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .forecast {

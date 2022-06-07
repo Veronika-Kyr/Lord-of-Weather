@@ -24,7 +24,12 @@ function newCity(event) {
     let apiKey = "936d2722fd6ddb5c6ab52ceb5b0238af";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     function getTemp(response) {
+        console.log(response.data);
         let newTemp = document.querySelector("#DT");
+        let humidityEl = document.querySelector("#humidity");
+        let windEl = document.querySelector("#wind");
+        humidityEl.textContent = `${response.data.main.humidity}`;
+        windEl.textContent = `${Math.round(response.data.wind.speed)}`;
         newTemp.textContent = `${Math.round(response.data.main.temp)}`;
         c.textContent = "℃";
         f.textContent = "℉";
@@ -72,6 +77,10 @@ function showTempPosition(position) {
         let headCity = document.querySelector("#headC");
         headCity.innerHTML = `${response.data.name}`;
         let newTemp = document.querySelector("#DT");
+        let humidityEl = document.querySelector("#humidity");
+        let windEl = document.querySelector("#wind");
+        humidityEl.textContent = `${response.data.main.humidity}`;
+        windEl.textContent = `${Math.round(response.data.wind.speed)}`;
         newTemp.textContent = `${Math.round(response.data.main.temp)}`;
         c.textContent = "℃";
         f.textContent = "℉";
