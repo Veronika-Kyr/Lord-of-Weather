@@ -1,15 +1,15 @@
 // Showing the real date and time
 
-let now = new Date();
-let day = now.getDay();
-let hour = now.getHours();
-let min = now.getMinutes();
-let weekday = [
-    "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
-];
-let currentDate = document.querySelector("#bdate");
-currentDate.innerHTML = `${weekday[day]} ${hour} : ${min}`;
-console.log(`${weekday[day]} ${hour} : ${min}`);
+// let now = new Date();
+// let day = now.getDay();
+// let hour = now.getHours();
+// let min = now.getMinutes();
+// let weekday = [
+//     "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+// ];
+// let currentDate = document.querySelector("#bdate");
+// currentDate.innerHTML = `${weekday[day]} ${hour} : ${min}`;
+// console.log(`${weekday[day]} ${hour} : ${min}`);
 
 // Showing the city you search and its real temperature
 
@@ -26,13 +26,19 @@ function newCity(event) {
     function getTemp(response) {
         console.log(response.data);
         let newTemp = document.querySelector("#DT");
+        let maxTemperEl = document.querySelector("#maxTemp");
+        let minTemperEl = document.querySelector("#minTemp");
         let humidityEl = document.querySelector("#humidity");
         let windEl = document.querySelector("#wind");
         humidityEl.textContent = `${response.data.main.humidity}`;
         windEl.textContent = `${Math.round(response.data.wind.speed)}`;
         newTemp.textContent = `${Math.round(response.data.main.temp)}`;
+        maxTemperEl.textContent = `${Math.round(response.data.main.temp_max)}`;
+        minTemperEl.textContent = `${Math.round(response.data.main.temp_min)}`;
         c.textContent = "℃";
         f.textContent = "℉";
+        cmin.textContent = "℃";
+        fmin.textContent = "℉";
     }
     axios.get(apiUrl).then(getTemp);
 }
@@ -43,6 +49,8 @@ formSearch.addEventListener("submit", newCity);
 
 let c = document.querySelector("#celcius");
 let f = document.querySelector("#farenheit");
+let cmin = document.querySelector("#celciusmin");
+let fmin = document.querySelector("#farenheitmin");
 
 function CFconversion(event) {
     event.preventDefault();
@@ -62,7 +70,35 @@ function CFconversion(event) {
     }
 }
 
+function CFminconversion(event) {
+    event.preventDefault();
+    let maxTemperEl = document.querySelector("#maxTemp");
+    let maxTemper = Number(maxTemperEl.textContent);
+    let minTemperEl = document.querySelector("#minTemp");
+    let minTemper = Number(minTemperEl.textContent);
+
+    if (cmin.innerHTML === "℃" && fmin.innerHTML === "℉") {
+        let countmaxF = Math.round((maxTemper * 9) / 5 + 32);
+        maxTemperEl.innerHTML = countmaxF;
+        let countminF = Math.round((minTemper * 9) / 5 + 32);
+        minTemperEl.innerHTML = countminF;
+        cmin.textContent = "℉";
+        fmin.textContent = "℃";
+    }
+    else {
+        let countmaxC = Math.round((maxTemper - 32) * 5 / 9);
+        maxTemperEl.innerHTML = countmaxC;
+        let countminC = Math.round((minTemper - 32) * 5 / 9);
+        minTemperEl.innerHTML = countminC;
+        cmin.textContent = "℃";
+        fmin.textContent = "℉";
+    }
+}
+
+
+
 f.addEventListener("click", CFconversion);
+fmin.addEventListener("click", CFminconversion);
 
 
 // Showing the current city you're in and its real temperature on button click
@@ -75,13 +111,20 @@ function showTempPosition(position) {
 
     function getTempbyCurrent(response) {
         let headCity = document.querySelector("#headC");
+        console.log(response.data);
         headCity.innerHTML = `${response.data.name}`;
         let newTemp = document.querySelector("#DT");
         let humidityEl = document.querySelector("#humidity");
         let windEl = document.querySelector("#wind");
+        let maxTemperEl = document.querySelector("#maxTemp");
+        let minTemperEl = document.querySelector("#minTemp");
         humidityEl.textContent = `${response.data.main.humidity}`;
         windEl.textContent = `${Math.round(response.data.wind.speed)}`;
         newTemp.textContent = `${Math.round(response.data.main.temp)}`;
+        maxTemperEl.textContent = `${Math.round(response.data.main.temp_max)}`;
+        minTemperEl.textContent = `${Math.round(response.data.main.temp_min)}`;
+        cmin.textContent = "℃";
+        fmin.textContent = "℉";
         c.textContent = "℃";
         f.textContent = "℉";
     }
@@ -102,11 +145,11 @@ button.addEventListener("click", gettPosition);
 
 
 // This will be in my project according to my prototype:
-// let dayNumber = now.getDate();
-// let month = now.getMonth();
-// let months = [
-//     "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
-// ];
-// let currentDate = document.querySelector("#bdate");
-// currentDate.innerHTML = `${months[month]} ${dayNumber}`;
-// 
+let now = new Date();
+let dayNumber = now.getDate();
+let month = now.getMonth();
+let months = [
+    "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+];
+let currentDate = document.querySelector("#bdate");
+currentDate.innerHTML = `${months[month]} ${dayNumber}`;
