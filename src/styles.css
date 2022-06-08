@@ -57,11 +57,9 @@ h4 {
 
 .measure {}
 
-.day {
-    width: 95px;
-    margin: 0 30px 0 20px;
-    vertical-align: top;
-    /* padding-top: 20px; */
+#skyIcon {
+    width: 155px;
+
 }
 
 .nighttemp {

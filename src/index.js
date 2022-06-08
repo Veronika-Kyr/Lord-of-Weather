@@ -30,11 +30,19 @@ function newCity(event) {
         let minTemperEl = document.querySelector("#minTemp");
         let humidityEl = document.querySelector("#humidity");
         let windEl = document.querySelector("#wind");
+        let skyIconEl = document.querySelector("#skyIcon");
+        let descriptionEl = document.querySelector("#weatherDescription");
         humidityEl.textContent = `${response.data.main.humidity}`;
         windEl.textContent = `${Math.round(response.data.wind.speed)}`;
         newTemp.textContent = `${Math.round(response.data.main.temp)}`;
         maxTemperEl.textContent = `${Math.round(response.data.main.temp_max)}`;
         minTemperEl.textContent = `${Math.round(response.data.main.temp_min)}`;
+        skyIconEl.setAttribute(
+            "src",
+            `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+        );
+        skyIconEl.setAttribute("alt", response.data.weather[0].description);
+        descriptionEl.innerHTML = response.data.weather[0].description;
         c.textContent = "℃";
         f.textContent = "℉";
         cmin.textContent = "℃";
@@ -118,11 +126,19 @@ function showTempPosition(position) {
         let windEl = document.querySelector("#wind");
         let maxTemperEl = document.querySelector("#maxTemp");
         let minTemperEl = document.querySelector("#minTemp");
+        let descriptionEl = document.querySelector("#weatherDescription");
+        humidityEl.textContent = `${response.data.main.humidity}`;
         humidityEl.textContent = `${response.data.main.humidity}`;
         windEl.textContent = `${Math.round(response.data.wind.speed)}`;
         newTemp.textContent = `${Math.round(response.data.main.temp)}`;
         maxTemperEl.textContent = `${Math.round(response.data.main.temp_max)}`;
         minTemperEl.textContent = `${Math.round(response.data.main.temp_min)}`;
+        skyIconEl.setAttribute(
+            "src",
+            `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+        );
+        skyIconEl.setAttribute("alt", response.data.weather[0].description);
+        descriptionEl.innerHTML = response.data.weather[0].description;
         cmin.textContent = "℃";
         fmin.textContent = "℉";
         c.textContent = "℃";
