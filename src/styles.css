@@ -55,11 +55,27 @@ h4 {
     font-size: 40px;
 }
 
+#celciusmin:hover {
+    color: rgb(15, 59, 120);
+    cursor: default;
+}
+
+#celcius:hover {
+    color: rgb(15, 59, 120);
+    cursor: default;
+}
+
 .measure {}
 
 #skyIcon {
     width: 155px;
 
+}
+
+.detailed {
+    padding-top: 0;
+    margin-top: 0;
+    line-height: 1;
 }
 
 .nighttemp {
@@ -71,7 +87,7 @@ h4 {
 
 #maxTemp {
     padding-left: 110px;
-    padding-top: 20px;
+    /* padding-top: 20px; */
     color: rgb(249, 100, 7);
 }
 
