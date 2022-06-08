@@ -1,17 +1,18 @@
-// Showing the real date and time
+// Showing the real date according to my prototype
 
-// let now = new Date();
-// let day = now.getDay();
-// let hour = now.getHours();
-// let min = now.getMinutes();
-// let weekday = [
-//     "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
-// ];
-// let currentDate = document.querySelector("#bdate");
-// currentDate.innerHTML = `${weekday[day]} ${hour} : ${min}`;
-// console.log(`${weekday[day]} ${hour} : ${min}`);
 
-// Showing the city you search and its real temperature
+let now = new Date();
+let dayNumber = now.getDate();
+let month = now.getMonth();
+let months = [
+    "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+];
+let currentDate = document.querySelector("#bdate");
+currentDate.innerHTML = `${months[month]} ${dayNumber}`;
+
+
+// Showing the city you search and its real weather
+
 
 let formSearch = document.querySelector("#search");
 let buttonSearch = document.querySelector("#BS");
@@ -53,7 +54,10 @@ function newCity(event) {
 formSearch.addEventListener("submit", newCity);
 
 
-// Conversion Celcius to Farenheit and backwards
+
+// Conversion Celcius to Farenheit and backwards for current temperature
+
+
 
 let c = document.querySelector("#celcius");
 let f = document.querySelector("#farenheit");
@@ -77,6 +81,10 @@ function CFconversion(event) {
         f.textContent = "℉";
     }
 }
+
+// Conversion Celcius to Farenheit and backwards for max/min temperature
+
+
 
 function CFminconversion(event) {
     event.preventDefault();
@@ -103,13 +111,12 @@ function CFminconversion(event) {
     }
 }
 
-
-
 f.addEventListener("click", CFconversion);
 fmin.addEventListener("click", CFminconversion);
 
 
-// Showing the current city you're in and its real temperature on button click
+// Showing the current city you're in and its real weather on button click
+
 
 function showTempPosition(position) {
     let lat = position.coords.latitude;
@@ -155,17 +162,19 @@ let button = document.querySelector("#currentCityTemp");
 button.addEventListener("click", gettPosition);
 
 
+// An older variant of date. Showing the real date and time
+
+// let now = new Date();
+// let day = now.getDay();
+// let hour = now.getHours();
+// let min = now.getMinutes();
+// let weekday = [
+//     "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+// ];
+// let currentDate = document.querySelector("#bdate");
+// currentDate.innerHTML = `${weekday[day]} ${hour} : ${min}`;
+// console.log(`${weekday[day]} ${hour} : ${min}`);
 
 
 
 
-
-// This will be in my project according to my prototype:
-let now = new Date();
-let dayNumber = now.getDate();
-let month = now.getMonth();
-let months = [
-    "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
-];
-let currentDate = document.querySelector("#bdate");
-currentDate.innerHTML = `${months[month]} ${dayNumber}`;
