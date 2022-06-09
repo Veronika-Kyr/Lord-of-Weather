@@ -176,5 +176,34 @@ button.addEventListener("click", gettPosition);
 // console.log(`${weekday[day]} ${hour} : ${min}`);
 
 
+function showForecast() {
+    let forecastEl = document.querySelector("#forecast");
+    let days = ["Thu", "Fri", "Sat", "Sun"];
+    let forecastHTML = `<div class="row row-cols-2">`;
+    days.forEach(function (day) {
+
+        forecastHTML = forecastHTML + `
+    
+    <div class="col border border-primary border-opacity-75">
+        <div class="row-3 forecast">
+            <div class="col fore-date">${day}</div>
+            <div class="col fore-temp">
+                <span class="smdaytemp">23℃</span> / <span class="smnighttemp">16℃</span>
+            </div>
+            <div class="col fore-status">
+            <img
+            src="https://openweathermap.org/img/wn/50d@2x.png"
+            alt="" width="60" class="iconFore"/>
+            </div>
+        </div>
+
+    </div>
+     `
+    });
+    forecastHTML = forecastHTML + `</div>`;
+    forecastEl.innerHTML = forecastHTML;
+}
+
+showForecast();
 
 
