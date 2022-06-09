@@ -176,6 +176,8 @@ button.addEventListener("click", gettPosition);
 // console.log(`${weekday[day]} ${hour} : ${min}`);
 
 
+// Creating the forecast columns via JS
+
 function showForecast() {
     let forecastEl = document.querySelector("#forecast");
     let days = ["Thu", "Fri", "Sat", "Sun"];
@@ -185,7 +187,7 @@ function showForecast() {
         forecastHTML = forecastHTML + `
     
     <div class="col border border-primary border-opacity-75">
-        <div class="row-3 forecast">
+        <div class="row-3 forecastForm">
             <div class="col fore-date">${day}</div>
             <div class="col fore-temp">
                 <span class="smdaytemp">23℃</span> / <span class="smnighttemp">16℃</span>
