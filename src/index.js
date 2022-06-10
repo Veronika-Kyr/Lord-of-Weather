@@ -11,6 +11,17 @@ let currentDate = document.querySelector("#bdate");
 currentDate.innerHTML = `${months[month]} ${dayNumber}`;
 
 
+// Getting a forecast data via lattitude & longtitude 
+
+function getForecast(coordinates) {
+    console.log(coordinates);
+    let apiKey = "936d2722fd6ddb5c6ab52ceb5b0238af";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(showForecast);
+
+}
+
+
 // Showing the city you search and its real weather
 
 
@@ -48,6 +59,10 @@ function newCity(event) {
         f.textContent = "℉";
         cmin.textContent = "℃";
         fmin.textContent = "℉";
+
+        getForecast(response.data.coord);
+
+
     }
     axios.get(apiUrl).then(getTemp);
 }
@@ -178,7 +193,7 @@ button.addEventListener("click", gettPosition);
 
 // Creating the forecast columns via JS
 
-function showForecast() {
+function showForecast(response) {
     let forecastEl = document.querySelector("#forecast");
     let days = ["Thu", "Fri", "Sat", "Sun"];
     let forecastHTML = `<div class="row row-cols-2">`;
@@ -206,6 +221,6 @@ function showForecast() {
     forecastEl.innerHTML = forecastHTML;
 }
 
-showForecast();
+// showForecast();
 
 
