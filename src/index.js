@@ -10,6 +10,21 @@ let months = [
 let currentDate = document.querySelector("#bdate");
 currentDate.innerHTML = `${months[month]} ${dayNumber}`;
 
+// Date conversion from API array
+
+function formatDate(day) {
+    let date = new Date(day * 1000);
+    let dayNumber = date.getDate();
+    let month = date.getMonth();
+    let months = [
+        "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"
+    ];
+    let fullDate = `${dayNumber}.${months[month]}`;
+    return fullDate;
+
+}
+
+
 
 // Getting a forecast data via lattitude & longtitude 
 
@@ -27,46 +42,56 @@ function getForecast(coordinates) {
 
 let formSearch = document.querySelector("#search");
 let buttonSearch = document.querySelector("#BS");
-function newCity(event) {
-    event.preventDefault();
-    let searchCity = document.querySelector("#CS");
-    let headCity = document.querySelector("#headC");
-    let city = searchCity.value;
-    headCity.innerHTML = city;
+
+function citySearch(city) {
     let apiKey = "936d2722fd6ddb5c6ab52ceb5b0238af";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    function getTemp(response) {
-        console.log(response.data);
-        let newTemp = document.querySelector("#DT");
-        let maxTemperEl = document.querySelector("#maxTemp");
-        let minTemperEl = document.querySelector("#minTemp");
-        let humidityEl = document.querySelector("#humidity");
-        let windEl = document.querySelector("#wind");
-        let skyIconEl = document.querySelector("#skyIcon");
-        let descriptionEl = document.querySelector("#weatherDescription");
-        humidityEl.textContent = `${response.data.main.humidity}`;
-        windEl.textContent = `${Math.round(response.data.wind.speed)}`;
-        newTemp.textContent = `${Math.round(response.data.main.temp)}`;
-        maxTemperEl.textContent = `${Math.round(response.data.main.temp_max)}`;
-        minTemperEl.textContent = `${Math.round(response.data.main.temp_min)}`;
-        skyIconEl.setAttribute(
-            "src",
-            `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-        );
-        skyIconEl.setAttribute("alt", response.data.weather[0].description);
-        descriptionEl.innerHTML = response.data.weather[0].description;
-        c.textContent = "℃";
-        f.textContent = "℉";
-        cmin.textContent = "℃";
-        fmin.textContent = "℉";
-
-        getForecast(response.data.coord);
-
-
-    }
     axios.get(apiUrl).then(getTemp);
 }
-formSearch.addEventListener("submit", newCity);
+
+function submitCity(event) {
+    event.preventDefault();
+    let searchCity = document.querySelector("#CS");
+    // let headCity = document.querySelector("#headC");
+    let city = citySearch(searchCity.value);
+    // headCity.innerHTML = city;
+}
+
+
+
+function getTemp(response) {
+    console.log(response.data);
+    let newTemp = document.querySelector("#DT");
+    let maxTemperEl = document.querySelector("#maxTemp");
+    let minTemperEl = document.querySelector("#minTemp");
+    let humidityEl = document.querySelector("#humidity");
+    let windEl = document.querySelector("#wind");
+    let skyIconEl = document.querySelector("#skyIcon");
+    let descriptionEl = document.querySelector("#weatherDescription");
+    let headCity = document.querySelector("#headC");
+    headCity.innerHTML = response.data.name;
+    humidityEl.textContent = `${response.data.main.humidity}`;
+    windEl.textContent = `${Math.round(response.data.wind.speed)}`;
+    newTemp.textContent = `${Math.round(response.data.main.temp)}`;
+    maxTemperEl.textContent = `${Math.round(response.data.main.temp_max)}`;
+    minTemperEl.textContent = `${Math.round(response.data.main.temp_min)}`;
+    skyIconEl.setAttribute(
+        "src",
+        `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+    skyIconEl.setAttribute("alt", response.data.weather[0].description);
+    descriptionEl.innerHTML = response.data.weather[0].description;
+    c.textContent = "℃";
+    f.textContent = "℉";
+    cmin.textContent = "℃";
+    fmin.textContent = "℉";
+
+    getForecast(response.data.coord);
+
+
+}
+
+formSearch.addEventListener("submit", submitCity);
 
 
 
@@ -194,33 +219,51 @@ button.addEventListener("click", gettPosition);
 // Creating the forecast columns via JS
 
 function showForecast(response) {
-    let forecastEl = document.querySelector("#forecast");
-    let days = ["Thu", "Fri", "Sat", "Sun"];
-    let forecastHTML = `<div class="row row-cols-2">`;
-    days.forEach(function (day) {
+    let forecastArray = response.data.daily;
 
-        forecastHTML = forecastHTML + `
+
+
+
+    let forecastEl = document.querySelector("#forecast");
+
+    let forecastHTML = `<div class="row row-cols-2">`;
+    forecastArray.forEach(function (forecastDay, index) {
+        if (index > 0 && index < 5) {
+            forecastHTML = forecastHTML + `
     
     <div class="col border border-primary border-opacity-75">
         <div class="row-3 forecastForm">
-            <div class="col fore-date">${day}</div>
+            <div class="col fore-date">${formatDate(forecastDay.dt)}</div>
             <div class="col fore-temp">
-                <span class="smdaytemp">23℃</span> / <span class="smnighttemp">16℃</span>
+                <span class="smdaytemp">${Math.round(forecastDay.temp.max)}</span>℃ / <span class="smnighttemp">${Math.round(forecastDay.temp.min)}</span>℃
             </div>
             <div class="col fore-status">
             <img
-            src="https://openweathermap.org/img/wn/50d@2x.png"
+            src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
             alt="" width="60" class="iconFore"/>
             </div>
         </div>
 
     </div>
-     `
+     `;
+        }
     });
     forecastHTML = forecastHTML + `</div>`;
     forecastEl.innerHTML = forecastHTML;
 }
 
 // showForecast();
+
+
+
+// function handleSubmit(event) {
+//     event.preventDefault();
+//     let cityInputElement = document.querySelector("#city-input");
+//     citySearch(cityInputElement.value);
+//   }
+
+
+citySearch("Kyiv");
+
 
 
